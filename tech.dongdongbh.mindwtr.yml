@@ -33,79 +33,28 @@ modules:
     build-commands:
       - |
           python3 - <<'PY'
-          import base64
           import json
           from pathlib import Path
-          from urllib.parse import quote
-
-
-          def package_name_from_path(package_path: str) -> str | None:
-              parts = Path(package_path).parts
-              last_name = None
-              i = 0
-              while i < len(parts):
-                  if parts[i] != "node_modules":
-                      i += 1
-                      continue
-                  i += 1
-                  if i >= len(parts):
-                      break
-                  name = parts[i]
-                  if name.startswith("@") and i + 1 < len(parts):
-                      name = f"{name}/{parts[i + 1]}"
-                      i += 1
-                  last_name = name
-                  i += 1
-              return last_name
-
-
-          def tarball_url(package_name: str, version: str) -> str:
-              encoded_name = quote(package_name, safe="@/")
-              basename = package_name.split("/")[-1]
-              return f"https://registry.npmjs.org/{encoded_name}/-/{basename}-{version}.tgz"
-
-
-          def integrity_from_hex(hex_digest: str) -> str:
-              return "sha512-" + base64.b64encode(bytes.fromhex(hex_digest)).decode()
 
           lock_path = Path("apps/desktop/package-lock.json")
-          node_sources_path = Path("tech.dongdongbh.mindwtr.node-sources.json")
           lock = json.loads(lock_path.read_text())
-          node_sources = json.loads(node_sources_path.read_text())
           packages = lock.get("packages", {})
-          npm_sources = {
-              entry["url"]: entry["sha512"]
-              for entry in node_sources
-              if isinstance(entry, dict)
-              and isinstance(entry.get("url"), str)
-              and entry["url"].startswith("https://registry.npmjs.org/")
-              and isinstance(entry.get("sha512"), str)
-          }
-          repaired = []
+          package_path = "node_modules/eslint/node_modules/escape-string-regexp"
+          meta = packages.get(package_path)
+          if not isinstance(meta, dict) or meta.get("version") != "4.0.0":
+              raise SystemExit(f"Unexpected package-lock entry at {package_path}")
 
-          for package_path, meta in packages.items():
-              if not isinstance(meta, dict) or not package_path.startswith("node_modules/") or meta.get("link"):
-                  continue
-              if "version" not in meta or ("resolved" in meta and "integrity" in meta):
-                  continue
+          changed = False
+          if not meta.get("resolved"):
+              meta["resolved"] = "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
+              changed = True
+          if not meta.get("integrity"):
+              meta["integrity"] = "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
+              changed = True
 
-              package_name = package_name_from_path(package_path)
-              version = meta.get("version")
-              if not package_name or not version:
-                  raise SystemExit(f"Could not derive npm package identity for {package_path}")
-
-              resolved = tarball_url(package_name, version)
-              sha512_hex = npm_sources.get(resolved)
-              if not sha512_hex:
-                  raise SystemExit(f"Missing npm cache metadata for {package_path} ({resolved})")
-
-              meta["resolved"] = resolved
-              meta["integrity"] = integrity_from_hex(sha512_hex)
-              repaired.append(package_path)
-
-          if repaired:
+          if changed:
               lock_path.write_text(json.dumps(lock, indent=2) + "\n")
-              print(f"Repaired package-lock metadata for {len(repaired)} nested package(s)")
+              print(f"Repaired package-lock metadata for {package_path}")
           PY
       - npm ci --prefix=apps/desktop --offline --legacy-peer-deps --workspaces=false
       - ln -sfn ../../apps/desktop/node_modules packages/core/node_modules
