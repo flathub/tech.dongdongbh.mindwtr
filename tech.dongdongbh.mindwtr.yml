@@ -31,6 +31,31 @@ modules:
         npm_config_fund: 'false'
         npm_config_update_notifier: 'false'
     build-commands:
+      - |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          lock_path = Path("apps/desktop/package-lock.json")
+          lock = json.loads(lock_path.read_text())
+          packages = lock.get("packages", {})
+          package_path = "node_modules/eslint/node_modules/escape-string-regexp"
+          meta = packages.get(package_path)
+          if not isinstance(meta, dict) or meta.get("version") != "4.0.0":
+              raise SystemExit(f"Unexpected package-lock entry at {package_path}")
+
+          changed = False
+          if not meta.get("resolved"):
+              meta["resolved"] = "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
+              changed = True
+          if not meta.get("integrity"):
+              meta["integrity"] = "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
+              changed = True
+
+          if changed:
+              lock_path.write_text(json.dumps(lock, indent=2) + "\n")
+              print(f"Repaired package-lock metadata for {package_path}")
+          PY
       - npm ci --prefix=apps/desktop --offline --legacy-peer-deps --workspaces=false
       - ln -sfn ../../apps/desktop/node_modules packages/core/node_modules
       - cd apps/desktop && npm exec vite build
@@ -46,6 +71,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: e791e0cf95ee1d8322cdff995424f703ba4f4eac
+        commit: deeefc827474bbabd1d58a4e13422590ad9026df
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
