@@ -20,6 +20,7 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
+        VITE_ANALYTICS_HEARTBEAT_URL: https://mindwtr-analytics.mindwtr.workers.dev/
         CARGO_HOME: /run/build/mindwtr/cargo
         CARGO_NET_OFFLINE: 'true'
         LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
@@ -71,6 +72,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: d241ebe6f5a70801fbd8d3ebcc265038eb696d4d
+        commit: abf9691eaff6c306109fe8d86e85a3de74ce3945
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
