@@ -38,12 +38,14 @@ modules:
           from pathlib import Path
 
           lock_path = Path("apps/desktop/package-lock.json")
+          package_path = Path("apps/desktop/package.json")
           lock = json.loads(lock_path.read_text())
+          package = json.loads(package_path.read_text())
           packages = lock.get("packages", {})
-          package_path = "node_modules/eslint/node_modules/escape-string-regexp"
-          meta = packages.get(package_path)
+          lock_package_path = "node_modules/eslint/node_modules/escape-string-regexp"
+          meta = packages.get(lock_package_path)
           if not isinstance(meta, dict) or meta.get("version") != "4.0.0":
-              raise SystemExit(f"Unexpected package-lock entry at {package_path}")
+              raise SystemExit(f"Unexpected package-lock entry at {lock_package_path}")
 
           changed = False
           if not meta.get("resolved"):
@@ -53,9 +55,33 @@ modules:
               meta["integrity"] = "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
               changed = True
 
+          synced_specs = []
+          for section_name in ("dependencies", "devDependencies", "optionalDependencies"):
+              section = package.get(section_name)
+              if not isinstance(section, dict):
+                  continue
+              for dependency_name, requested_spec in list(section.items()):
+                  if not isinstance(requested_spec, str):
+                      continue
+                  if requested_spec.startswith(("file:", "workspace:", "git+", "github:", "http:", "https:", "link:", "npm:")):
+                      continue
+                  locked = packages.get(f"node_modules/{dependency_name}")
+                  locked_version = locked.get("version") if isinstance(locked, dict) else None
+                  if not isinstance(locked_version, str) or not locked_version:
+                      continue
+                  if requested_spec == locked_version:
+                      continue
+                  section[dependency_name] = locked_version
+                  synced_specs.append(f"{section_name}:{dependency_name}:{requested_spec}->{locked_version}")
+
           if changed:
               lock_path.write_text(json.dumps(lock, indent=2) + "\n")
-              print(f"Repaired package-lock metadata for {package_path}")
+              print(f"Repaired package-lock metadata for {lock_package_path}")
+          if synced_specs:
+              package_path.write_text(json.dumps(package, indent=2) + "\n")
+              print("Aligned package.json specs to package-lock:")
+              for item in synced_specs:
+                  print(f"  - {item}")
           PY
       - npm ci --prefix=apps/desktop --offline --legacy-peer-deps --workspaces=false
       - ln -sfn ../../apps/desktop/node_modules packages/core/node_modules
@@ -72,6 +98,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 7a1efdcdc28e9110f58b02b95aaefd547ed08380
+        commit: 6e3afa680199e4c9bcaf102565152ce5480e226a
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
