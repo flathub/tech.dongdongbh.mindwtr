@@ -83,8 +83,12 @@ modules:
               for item in synced_specs:
                   print(f"  - {item}")
           PY
+      - mkdir -p .flatpak-core-install
+      - cp packages/core/package.json packages/core/package-lock.json .flatpak-core-install/
+      - npm ci --prefix=.flatpak-core-install --offline --legacy-peer-deps --workspaces=false
+      - rm -rf packages/core/node_modules
+      - mv .flatpak-core-install/node_modules packages/core/node_modules
       - npm ci --prefix=apps/desktop --offline --legacy-peer-deps --workspaces=false
-      - ln -sfn ../../apps/desktop/node_modules packages/core/node_modules
       - cd apps/desktop && npm exec vite build
       - mkdir -p .cargo
       - cp cargo/config .cargo/config.toml
