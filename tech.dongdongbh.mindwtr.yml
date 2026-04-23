@@ -14,6 +14,8 @@ finish-args:
   - --device=dri
   - --share=network
 
+  - --talk-name=org.tech_dongdongbh_mindwtr.SingleInstance
+  - --own-name=org.tech_dongdongbh_mindwtr.SingleInstance
 modules:
   - name: mindwtr
     buildsystem: simple
@@ -103,6 +105,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 0f2da3fbdda20c750d1fe3d68ca12cd9d7cc64a8
+        commit: bc79f86f32ddf4f6291fac8d3f96231677524e0e
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
