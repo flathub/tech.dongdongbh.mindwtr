@@ -14,8 +14,6 @@ finish-args:
   - --device=dri
   - --share=network
 
-  - --talk-name=org.tech_dongdongbh_mindwtr.SingleInstance
-  - --own-name=org.tech_dongdongbh_mindwtr.SingleInstance
 modules:
   - name: mindwtr
     buildsystem: simple
