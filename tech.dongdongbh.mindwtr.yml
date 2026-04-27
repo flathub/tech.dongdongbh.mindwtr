@@ -1,6 +1,6 @@
 id: tech.dongdongbh.mindwtr
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node22
@@ -11,6 +11,7 @@ finish-args:
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
+  - --socket=pulseaudio
   - --device=dri
   - --share=network
 
@@ -103,6 +104,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 0902f0c9b3ece00e4e8f5540f195f550b00637ae
+        commit: 3ec41ca47f1dcb59cab838ab0aacedf412149026
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
