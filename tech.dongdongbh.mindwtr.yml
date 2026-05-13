@@ -104,6 +104,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 53f7b9ba076abb1e99cbb5c4c33d8afd93bf0fe8
+        commit: db637242aabf04d0672dcca5a384be21908b096f
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
