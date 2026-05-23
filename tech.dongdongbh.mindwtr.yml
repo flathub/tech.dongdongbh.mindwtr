@@ -14,6 +14,7 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
   - --share=network
+  - --talk-name=org.freedesktop.Notifications
 
 modules:
   - name: mindwtr
