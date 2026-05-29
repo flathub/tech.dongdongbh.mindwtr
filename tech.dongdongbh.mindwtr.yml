@@ -15,6 +15,7 @@ finish-args:
   - --device=dri
   - --share=network
   - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
 
 modules:
   - name: mindwtr
@@ -105,6 +106,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 1839a5c40e5879e180ff84a68112764139d22432
+        commit: 7e3da1ba2682dbc8ccbfb93b078adb9c4f068d8e
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
