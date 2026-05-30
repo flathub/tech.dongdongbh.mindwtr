@@ -18,6 +18,7 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
 
 modules:
+  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
   - name: mindwtr
     buildsystem: simple
     build-options:
