@@ -24,18 +24,19 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
-        VITE_DROPBOX_APP_KEY: 7ob82zg0lx0arkp
-        VITE_ANALYTICS_HEARTBEAT_URL: https://mindwtr-analytics.mindwtr.workers.dev/
-        CARGO_HOME: /run/build/mindwtr/cargo
-        CARGO_NET_OFFLINE: 'true'
-        LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
-        XDG_CACHE_HOME: /run/build/mindwtr/flatpak-node/cache
-        npm_config_cache: /run/build/mindwtr/flatpak-node/npm-cache
-        npm_config_nodedir: /usr/lib/sdk/node22
-        npm_config_offline: 'true'
-        npm_config_audit: 'false'
-        npm_config_fund: 'false'
-        npm_config_update_notifier: 'false'
+        - VITE_DONATION_PROMPT_ENABLED=true
+        - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
+        - VITE_ANALYTICS_HEARTBEAT_URL=https://mindwtr-analytics.mindwtr.workers.dev/
+        - CARGO_HOME=/run/build/mindwtr/cargo
+        - CARGO_NET_OFFLINE=true
+        - LIBCLANG_PATH=/usr/lib/sdk/llvm20/lib
+        - XDG_CACHE_HOME=/run/build/mindwtr/flatpak-node/cache
+        - npm_config_cache=/run/build/mindwtr/flatpak-node/npm-cache
+        - npm_config_nodedir=/usr/lib/sdk/node22
+        - npm_config_offline=true
+        - npm_config_audit=false
+        - npm_config_fund=false
+        - npm_config_update_notifier=false
     build-commands:
       - |
           python3 - <<'PY'
@@ -107,6 +108,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 09b36e628bbf0335ea78497c77488f2ff52939a8
+        commit: 857233d81ede6491cfd9eb34fb48745e51380e4e
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
