@@ -24,19 +24,19 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
-        VITE_DONATION_PROMPT_ENABLED: true
-        VITE_DROPBOX_APP_KEY: 7ob82zg0lx0arkp
-        VITE_ANALYTICS_HEARTBEAT_URL: https://mindwtr-analytics.mindwtr.workers.dev/
-        CARGO_HOME: /run/build/mindwtr/cargo
-        CARGO_NET_OFFLINE: 'true'
-        LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
-        XDG_CACHE_HOME: /run/build/mindwtr/flatpak-node/cache
-        npm_config_cache: /run/build/mindwtr/flatpak-node/npm-cache
-        npm_config_nodedir: /usr/lib/sdk/node22
-        npm_config_offline: 'true'
-        npm_config_audit: 'false'
-        npm_config_fund: 'false'
-        npm_config_update_notifier: 'false'
+        - VITE_DONATION_PROMPT_ENABLED=true
+        - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
+        - VITE_ANALYTICS_HEARTBEAT_URL=https://mindwtr-analytics.mindwtr.workers.dev/
+        - CARGO_HOME=/run/build/mindwtr/cargo
+        - CARGO_NET_OFFLINE=true
+        - LIBCLANG_PATH=/usr/lib/sdk/llvm20/lib
+        - XDG_CACHE_HOME=/run/build/mindwtr/flatpak-node/cache
+        - npm_config_cache=/run/build/mindwtr/flatpak-node/npm-cache
+        - npm_config_nodedir=/usr/lib/sdk/node22
+        - npm_config_offline=true
+        - npm_config_audit=false
+        - npm_config_fund=false
+        - npm_config_update_notifier=false
     build-commands:
       - |
           python3 - <<'PY'
