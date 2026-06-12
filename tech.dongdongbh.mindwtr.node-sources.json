@@ -1915,6 +1915,13 @@
     },
     {
         "type": "file",
+        "url": "https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.4.0-0.tgz",
+        "sha512": "e247a2da4f47aff7c5bf134bec2ea4f967846157a17b98cef330dca511030d9e082daf5a7fcb4d9aa35424a0062723ea2801ec74c9b06348d7e604c28915b0e0",
+        "dest-filename": "a2da4f47aff7c5bf134bec2ea4f967846157a17b98cef330dca511030d9e082daf5a7fcb4d9aa35424a0062723ea2801ec74c9b06348d7e604c28915b0e0",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/e2/47"
+    },
+    {
+        "type": "file",
         "url": "https://registry.npmjs.org/date-fns/-/date-fns-4.1.0.tgz",
         "sha512": "524ab4a306d05f16bf537106b6c755064475c3b28e43980806a747da192f927cd93d8bc1c5bfda6ba13c2fbb668c5b64c1906edd45c16e32203e8fc4cf8c5a36",
         "dest-filename": "b4a306d05f16bf537106b6c755064475c3b28e43980806a747da192f927cd93d8bc1c5bfda6ba13c2fbb668c5b64c1906edd45c16e32203e8fc4cf8c5a36",
@@ -4225,6 +4232,12 @@
         "contents": "1ca09ff01bdbe638f3b844d3aa65eb4607aa7a43\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-2.0.0.tgz\", \"integrity\": \"sha512-IrtvNvjxC1o06taBAVJznEnkiHxLFTzgonUdy8hzFVeDun0uTjxxrRGVaNFqkU1wJR3RBPEfsxmU6jDWPofrTQ==\", \"time\": 0, \"size\": 5740, \"metadata\": {\"url\": \"https://registry.npmjs.org/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-2.0.0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "76e3798cbc13f0e3378766ce5c005e62a623f55505330c8ab25b07ba3ca4",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/ee/12"
+    },
+    {
+        "type": "inline",
+        "contents": "1cf84cf736f60e30213018da7854a38bd363dea1\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.4.0-0.tgz\", \"integrity\": \"sha512-4kei2k9Hr/fFvxNL7C6k+WeEYVehe5jO8zDcpREDDZ4ILa9af8tNmqNUJKAGJyPqKAHsdMmwY0jX5gTCiRWw4A==\", \"time\": 0, \"size\": 713082, \"metadata\": {\"url\": \"https://registry.npmjs.org/date-fns-jalali/-/date-fns-jalali-4.4.0-0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "a5bd35b49a08080c6c947f17b14d89d6bd8a96fe25fb4ec28c9fe3a1edcf",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/78/0b"
     },
     {
         "type": "inline",
