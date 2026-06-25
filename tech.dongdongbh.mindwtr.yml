@@ -26,7 +26,7 @@ modules:
       env:
         - VITE_DONATION_PROMPT_ENABLED=true
         - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
-        - VITE_ANALYTICS_HEARTBEAT_URL=https://mindwtr-analytics.mindwtr.workers.dev/
+        - VITE_ANALYTICS_HEARTBEAT_URL=https://analytics.mindwtr.app/
         - CARGO_HOME=/run/build/mindwtr/cargo
         - CARGO_NET_OFFLINE=true
         - LIBCLANG_PATH=/usr/lib/sdk/llvm20/lib
@@ -109,5 +109,7 @@ modules:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
         commit: dc87f5fe7f58b26c49bd82ce295fd54491891c31
+      - type: patch
+        path: appstream-homepage.patch
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
