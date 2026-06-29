@@ -110,7 +110,5 @@ modules:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
         commit: d988ee5820bda03169f84255e7118d25ab6c0ca2
-      - type: patch
-        path: appstream-homepage.patch
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
