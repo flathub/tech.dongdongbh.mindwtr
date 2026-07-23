@@ -28,13 +28,13 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_LIBDIR=lib
-      - -DSHARED_ONLY=true
-      - -DICAL_BUILD_DOCS=false
-      - -DICAL_GLIB=true
-      - -DICAL_GLIB_VAPI=false
-      - -DGOBJECT_INTROSPECTION=false
+      - -DLIBICAL_BUILD_DOCS=false
+      - -DLIBICAL_GLIB=true
+      - -DLIBICAL_GLIB_VAPI=false
+      - -DLIBICAL_JAVA_BINDINGS=false
+      - -DLIBICAL_GOBJECT_INTROSPECTION=false
       - -DLIBICAL_BUILD_TESTING=false
-      - -DWITH_CXX_BINDINGS=false
+      - -DLIBICAL_CXX_BINDINGS=false
     sources:
       - type: archive
         url: https://github.com/libical/libical/releases/download/v4.0.3/libical-4.0.3.tar.gz
