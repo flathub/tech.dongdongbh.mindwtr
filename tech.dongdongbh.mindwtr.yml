@@ -28,17 +28,17 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_LIBDIR=lib
-      - -DSHARED_ONLY=true
-      - -DICAL_BUILD_DOCS=false
-      - -DICAL_GLIB=true
-      - -DICAL_GLIB_VAPI=false
-      - -DGOBJECT_INTROSPECTION=false
+      - -DLIBICAL_BUILD_DOCS=false
+      - -DLIBICAL_GLIB=true
+      - -DLIBICAL_GLIB_VAPI=false
+      - -DLIBICAL_JAVA_BINDINGS=false
+      - -DLIBICAL_GOBJECT_INTROSPECTION=false
       - -DLIBICAL_BUILD_TESTING=false
-      - -DWITH_CXX_BINDINGS=false
+      - -DLIBICAL_CXX_BINDINGS=false
     sources:
       - type: archive
-        url: https://github.com/libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz
-        sha256: e73de92f5a6ce84c1b00306446b290a2b08cdf0a80988eca0a2c9d5c3510b4c2
+        url: https://github.com/libical/libical/releases/download/v4.0.3/libical-4.0.3.tar.gz
+        sha256: 86f29029d0ec9fa30c9001de16c0859a3816ae154ff5b097392b014e21a3d254
         x-checker-data:
           type: anitya
           project-id: 1637
@@ -104,56 +104,56 @@ modules:
         - VITE_ANALYTICS_RELEASE_VERSION=v1.1.0
     build-commands:
       - |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
+        python3 - <<'PY'
+        import json
+        from pathlib import Path
 
-          lock_path = Path("apps/desktop/package-lock.json")
-          package_path = Path("apps/desktop/package.json")
-          lock = json.loads(lock_path.read_text())
-          package = json.loads(package_path.read_text())
-          packages = lock.get("packages", {})
-          lock_package_path = "node_modules/eslint/node_modules/escape-string-regexp"
-          meta = packages.get(lock_package_path)
-          if not isinstance(meta, dict) or meta.get("version") != "4.0.0":
-              raise SystemExit(f"Unexpected package-lock entry at {lock_package_path}")
+        lock_path = Path("apps/desktop/package-lock.json")
+        package_path = Path("apps/desktop/package.json")
+        lock = json.loads(lock_path.read_text())
+        package = json.loads(package_path.read_text())
+        packages = lock.get("packages", {})
+        lock_package_path = "node_modules/eslint/node_modules/escape-string-regexp"
+        meta = packages.get(lock_package_path)
+        if not isinstance(meta, dict) or meta.get("version") != "4.0.0":
+            raise SystemExit(f"Unexpected package-lock entry at {lock_package_path}")
 
-          changed = False
-          if not meta.get("resolved"):
-              meta["resolved"] = "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
-              changed = True
-          if not meta.get("integrity"):
-              meta["integrity"] = "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
-              changed = True
+        changed = False
+        if not meta.get("resolved"):
+            meta["resolved"] = "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
+            changed = True
+        if not meta.get("integrity"):
+            meta["integrity"] = "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA=="
+            changed = True
 
-          synced_specs = []
-          for section_name in ("dependencies", "devDependencies", "optionalDependencies"):
-              section = package.get(section_name)
-              if not isinstance(section, dict):
-                  continue
-              for dependency_name, requested_spec in list(section.items()):
-                  if not isinstance(requested_spec, str):
-                      continue
-                  if requested_spec.startswith(("file:", "workspace:", "git+", "github:", "http:", "https:", "link:", "npm:")):
-                      continue
-                  locked = packages.get(f"node_modules/{dependency_name}")
-                  locked_version = locked.get("version") if isinstance(locked, dict) else None
-                  if not isinstance(locked_version, str) or not locked_version:
-                      continue
-                  if requested_spec == locked_version:
-                      continue
-                  section[dependency_name] = locked_version
-                  synced_specs.append(f"{section_name}:{dependency_name}:{requested_spec}->{locked_version}")
+        synced_specs = []
+        for section_name in ("dependencies", "devDependencies", "optionalDependencies"):
+            section = package.get(section_name)
+            if not isinstance(section, dict):
+                continue
+            for dependency_name, requested_spec in list(section.items()):
+                if not isinstance(requested_spec, str):
+                    continue
+                if requested_spec.startswith(("file:", "workspace:", "git+", "github:", "http:", "https:", "link:", "npm:")):
+                    continue
+                locked = packages.get(f"node_modules/{dependency_name}")
+                locked_version = locked.get("version") if isinstance(locked, dict) else None
+                if not isinstance(locked_version, str) or not locked_version:
+                    continue
+                if requested_spec == locked_version:
+                    continue
+                section[dependency_name] = locked_version
+                synced_specs.append(f"{section_name}:{dependency_name}:{requested_spec}->{locked_version}")
 
-          if changed:
-              lock_path.write_text(json.dumps(lock, indent=2) + "\n")
-              print(f"Repaired package-lock metadata for {lock_package_path}")
-          if synced_specs:
-              package_path.write_text(json.dumps(package, indent=2) + "\n")
-              print("Aligned package.json specs to package-lock:")
-              for item in synced_specs:
-                  print(f"  - {item}")
-          PY
+        if changed:
+            lock_path.write_text(json.dumps(lock, indent=2) + "\n")
+            print(f"Repaired package-lock metadata for {lock_package_path}")
+        if synced_specs:
+            package_path.write_text(json.dumps(package, indent=2) + "\n")
+            print("Aligned package.json specs to package-lock:")
+            for item in synced_specs:
+                print(f"  - {item}")
+        PY
       - mkdir -p .flatpak-core-install
       - cp packages/core/package.json packages/core/package-lock.json .flatpak-core-install/
       - npm ci --prefix=.flatpak-core-install --offline --legacy-peer-deps --workspaces=false
@@ -163,11 +163,13 @@ modules:
       - cd apps/desktop && npm exec vite build
       - mkdir -p .cargo
       - cp cargo/config .cargo/config.toml
-      - cargo --offline build --manifest-path apps/desktop/src-tauri/Cargo.toml --bins --features tauri/custom-protocol --release
+      - cargo --offline build --manifest-path apps/desktop/src-tauri/Cargo.toml --bins
+        --features tauri/custom-protocol --release
       - install -Dm755 apps/desktop/src-tauri/target/release/mindwtr /app/bin/mindwtr
       - install -Dm644 apps/desktop/src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/tech.dongdongbh.mindwtr.png
       - install -Dm644 apps/desktop/src-tauri/icons/128x128@2x.png /app/share/icons/hicolor/256x256/apps/tech.dongdongbh.mindwtr.png
-      - install -Dm644 apps/desktop/src-tauri/linux/tech.dongdongbh.mindwtr.desktop /app/share/applications/tech.dongdongbh.mindwtr.desktop
+      - install -Dm644 apps/desktop/src-tauri/linux/tech.dongdongbh.mindwtr.desktop
+        /app/share/applications/tech.dongdongbh.mindwtr.desktop
       - install -Dm644 apps/desktop/src-tauri/linux/Mindwtr.metainfo.xml /app/share/metainfo/tech.dongdongbh.mindwtr.metainfo.xml
       - install -Dm644 LICENSE /app/share/licenses/tech.dongdongbh.mindwtr/LICENSE
     sources:
