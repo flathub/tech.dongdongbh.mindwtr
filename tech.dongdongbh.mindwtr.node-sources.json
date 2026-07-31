@@ -1474,6 +1474,13 @@
     },
     {
         "type": "file",
+        "url": "https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-19.1.0.tgz",
+        "sha512": "5c3d1666b1ea8cdaf103f31a47d3b6db0fd136275647d619981751188ef0727586aefff7740f3028227c9badd29feb4b2617239ae84e8badbd37ae96ea4816cd",
+        "dest-filename": "1666b1ea8cdaf103f31a47d3b6db0fd136275647d619981751188ef0727586aefff7740f3028227c9badd29feb4b2617239ae84e8badbd37ae96ea4816cd",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/5c/3d"
+    },
+    {
+        "type": "file",
         "url": "https://registry.npmjs.org/@types/react/-/react-19.1.17.tgz",
         "sha512": "41e7351379a100b99ab2922b856b7d8e440c35dc3a6d1795bbae268ef85b86ad8d14f7ed2cf56bfa5d526609b0ffae96c013690e1edaa39013ea0179bf8d4f14",
         "dest-filename": "351379a100b99ab2922b856b7d8e440c35dc3a6d1795bbae268ef85b86ad8d14f7ed2cf56bfa5d526609b0ffae96c013690e1edaa39013ea0179bf8d4f14",
@@ -3350,6 +3357,13 @@
     },
     {
         "type": "file",
+        "url": "https://registry.npmjs.org/react-is/-/react-is-19.2.8.tgz",
+        "sha512": "b39ba7dbc9d8c4a270e60bd41f25b93c20b6f02bc1a8bbbdaf77168331d3e15a3fe5faaa90571d458b0670a7f9d1630fa638c5652e5defa7e7dd80a8da78cac1",
+        "dest-filename": "a7dbc9d8c4a270e60bd41f25b93c20b6f02bc1a8bbbdaf77168331d3e15a3fe5faaa90571d458b0670a7f9d1630fa638c5652e5defa7e7dd80a8da78cac1",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/b3/9b"
+    },
+    {
+        "type": "file",
         "url": "https://registry.npmjs.org/react-markdown/-/react-markdown-10.1.0.tgz",
         "sha512": "a8ac55a292d3fd3c80e815f751ee4dc1a6ceb00ce6d10ee400fc2ae8bfb0583c22b18b3b47cbd9d27457aaaeab92e79ba31a648ef2c653d7d689f897fd9645c5",
         "dest-filename": "55a292d3fd3c80e815f751ee4dc1a6ceb00ce6d10ee400fc2ae8bfb0583c22b18b3b47cbd9d27457aaaeab92e79ba31a648ef2c653d7d689f897fd9645c5",
@@ -3361,6 +3375,13 @@
         "sha512": "cfa17b2bd6d5f3911fb1e442a766f3ae9c90d06930d6e2e809e97d5c15563e0fd38d18fde12909cd44c67ce6b86ecee226f056b501b45aaef09c8d2ccb0dc405",
         "dest-filename": "7b2bd6d5f3911fb1e442a766f3ae9c90d06930d6e2e809e97d5c15563e0fd38d18fde12909cd44c67ce6b86ecee226f056b501b45aaef09c8d2ccb0dc405",
         "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/cf/a1"
+    },
+    {
+        "type": "file",
+        "url": "https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-19.1.0.tgz",
+        "sha512": "8d79129770a9bcf60417ea7f7860cb078b0fa035fca4a918bd197dfab47c1f12d8d17d38bd6ee10a6d7fd331e85128cf6776c36bec1758d4c3548c3f47c68357",
+        "dest-filename": "129770a9bcf60417ea7f7860cb078b0fa035fca4a918bd197dfab47c1f12d8d17d38bd6ee10a6d7fd331e85128cf6776c36bec1758d4c3548c3f47c68357",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/8d/79"
     },
     {
         "type": "file",
@@ -4676,6 +4697,12 @@
         "contents": "3e1fbfba45d3321c44e6128498de3063326c66a9\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.27.4.tgz\", \"integrity\": \"sha512-gdLscB7v75wRfu7QSm/zg6Rx29VLdy9eTr2t44sfTW7CxwAtQghZ4ZnqHk3/ogz7xao0QAgrkradbBzcqFPasw==\", \"time\": 0, \"size\": 4416170, \"metadata\": {\"url\": \"https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.27.4.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "db1e6dd223a9ebf9ba94941ba49d70b8c9706a19cec9568041c750ad590b",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/b0/c1"
+    },
+    {
+        "type": "inline",
+        "contents": "3ee369fb1362a33acb53db6f8c976ea98e6bd309\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/react-is/-/react-is-19.2.8.tgz\", \"integrity\": \"sha512-s5un28nYxKJw5gvUHyW5PCC28CvBqLu9r3cWgzHT4Vo/5fqqkFcdRYsGcKf50WMPpjjFZS5d76fn3YCo2njKwQ==\", \"time\": 0, \"size\": 3172, \"metadata\": {\"url\": \"https://registry.npmjs.org/react-is/-/react-is-19.2.8.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "9d9e209467ce7760002ec2288a28d40c716454a48d3b0d0f6eb02267d2ea",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/a1/f4"
     },
     {
         "type": "inline",
@@ -6413,6 +6440,12 @@
     },
     {
         "type": "inline",
+        "contents": "bb2d07c75ea896e255e2fbbce68cb8b08a4c89dd\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-19.1.0.tgz\", \"integrity\": \"sha512-XD0WZrHqjNrxA/MaR9O22w/RNidWR9YZmBdRGI7wcnWGrv/3dA8wKCJ8m63Sn+tLJhcjmuhOi629N66W6kgWzQ==\", \"time\": 0, \"size\": 2915, \"metadata\": {\"url\": \"https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-19.1.0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "9a50f677b0920905222885f6d423f1c3903f282f27dfa0e6661bc67c57ea",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/eb/30"
+    },
+    {
+        "type": "inline",
         "contents": "bb55e6dbe8893d62ac4b4208ec54983157603f12\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.60.1.tgz\", \"integrity\": \"sha512-wcuocpaOlaL1COBYiA89O6yfjlp3RwKDeTIA0hM7OpmhR1Bjo9j31G1uQVpDlTvwxGn2nQs65fBFL5UFd76FcQ==\", \"time\": 0, \"size\": 927723, \"metadata\": {\"url\": \"https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.60.1.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "7ff1abf98f21a7ddb4cd7352bfa824ac202fdd9f380f9665f0f861cf2986",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/c4/7c"
@@ -7136,6 +7169,12 @@
         "contents": "f3014f5b0c78d2bdd936ae3e98740fb65f9dbdc7\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.2.tgz\", \"integrity\": \"sha512-nJl2KGTlrf9GjLimgIru+V/mzgSK0ABCDQRvxw5BjURL7WfH5uoWmizbH7QB6MmnMBd8cIC9uceWnezL1VZWWw==\", \"time\": 0, \"size\": 74929, \"metadata\": {\"url\": \"https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.2.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "867f6ed39e2d8a6f3a6355779990acfe09c0c59d4c43d56bb55d305b879b",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/a3/3b"
+    },
+    {
+        "type": "inline",
+        "contents": "f32a419f2af9be65a8c7131429d130aed259bf83\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-19.1.0.tgz\", \"integrity\": \"sha512-jXkSl3CpvPYEF+p/eGDLB4sPoDX8pKkYvRl9+rR8HxLY0X04vW7hCm1/0zHoUSjPZ3bDa+wXWNTDVIw/R8aDVw==\", \"time\": 0, \"size\": 147274, \"metadata\": {\"url\": \"https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-19.1.0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "2749c9c9f356ee306235e968364ecf54181fac2eddcaf98a14abbd1abddd",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/17/16"
     },
     {
         "type": "inline",
