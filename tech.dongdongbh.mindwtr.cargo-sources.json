@@ -1861,14 +1861,14 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/event-listener/event-listener-5.4.1.crate",
-        "sha256": "e13b66accf52311f30a0db42147dadea9850cb48cd070028831ae5f5d4b856ab",
-        "dest": "cargo/vendor/event-listener-5.4.1"
+        "url": "https://static.crates.io/crates/event-listener/event-listener-5.4.2.crate",
+        "sha256": "5a23add41df1562121a9393cb065eab5146a1242410f23a644851e90cfd669d2",
+        "dest": "cargo/vendor/event-listener-5.4.2"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"e13b66accf52311f30a0db42147dadea9850cb48cd070028831ae5f5d4b856ab\", \"files\": {}}",
-        "dest": "cargo/vendor/event-listener-5.4.1",
+        "contents": "{\"package\": \"5a23add41df1562121a9393cb065eab5146a1242410f23a644851e90cfd669d2\", \"files\": {}}",
+        "dest": "cargo/vendor/event-listener-5.4.2",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -2896,6 +2896,19 @@
         "type": "inline",
         "contents": "{\"package\": \"e3c93eb611681b207e1fe55d5a71ecf91572ec8a6705cdb6857f7d8d5242cf58\", \"files\": {}}",
         "dest": "cargo/vendor/hyper-rustls-0.27.7",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/hyper-tls/hyper-tls-0.6.0.crate",
+        "sha256": "70206fc6890eaca9fde8a0bf71caa2ddfc9fe045ac9e5c70df101a7dbde866e0",
+        "dest": "cargo/vendor/hyper-tls-0.6.0"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"70206fc6890eaca9fde8a0bf71caa2ddfc9fe045ac9e5c70df101a7dbde866e0\", \"files\": {}}",
+        "dest": "cargo/vendor/hyper-tls-0.6.0",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -7251,6 +7264,19 @@
         "type": "inline",
         "contents": "{\"package\": \"af407857209536a95c8e56f8231ef2c2e2aff839b22e07a1ffcbc617e9db9fa5\", \"files\": {}}",
         "dest": "cargo/vendor/tokio-macros-2.6.0",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/tokio-native-tls/tokio-native-tls-0.3.1.crate",
+        "sha256": "bbae76ab933c85776efabc971569dd6119c580d8f5d448769dec1764bf796ef2",
+        "dest": "cargo/vendor/tokio-native-tls-0.3.1"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"bbae76ab933c85776efabc971569dd6119c580d8f5d448769dec1764bf796ef2\", \"files\": {}}",
+        "dest": "cargo/vendor/tokio-native-tls-0.3.1",
         "dest-filename": ".cargo-checksum.json"
     },
     {
