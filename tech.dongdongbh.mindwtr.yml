@@ -101,7 +101,7 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.0-rc.1
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.0-rc.2
     build-commands:
       - |
           python3 - <<'PY'
@@ -173,6 +173,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 8be0eab099c6a4b104a079d3562151bb81da68a8
+        commit: 9eb083ebb60e376b95ab324a8d06c98a64ddb53a
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
