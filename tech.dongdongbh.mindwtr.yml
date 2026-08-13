@@ -37,8 +37,8 @@ modules:
       - -DLIBICAL_CXX_BINDINGS=false
     sources:
       - type: archive
-        url: https://github.com/libical/libical/releases/download/v4.0.3/libical-4.0.3.tar.gz
-        sha256: 86f29029d0ec9fa30c9001de16c0859a3816ae154ff5b097392b014e21a3d254
+        url: https://github.com/libical/libical/releases/download/v4.0.4/libical-4.0.4.tar.gz
+        sha256: c851cdb46da5e6397881dafaa592c5516fb49da05dd1bb095f711a6d20eac422
         x-checker-data:
           type: anitya
           project-id: 1637
