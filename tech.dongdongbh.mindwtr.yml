@@ -101,11 +101,12 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.0-rc.4
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.0
     build-commands:
       - |
           python3 - <<'PY'
           import json
+          import re
           from pathlib import Path
 
           lock_path = Path("apps/desktop/package-lock.json")
@@ -153,6 +154,18 @@ modules:
               print("Aligned package.json specs to package-lock:")
               for item in synced_specs:
                   print(f"  - {item}")
+
+          metainfo_path = Path("apps/desktop/src-tauri/linux/Mindwtr.metainfo.xml")
+          metainfo = metainfo_path.read_text()
+          metainfo, removed_prereleases = re.subn(
+              r'\n    <release version="[^"]*-(?:rc|beta|alpha|pre|preview)(?:[.-][^"]*)?".*?\n    </release>',
+              '',
+              metainfo,
+              flags=re.DOTALL,
+          )
+          if removed_prereleases:
+              metainfo_path.write_text(metainfo)
+              print(f"Removed {removed_prereleases} prerelease AppStream entries from the stable build")
           PY
       - mkdir -p .flatpak-core-install
       - cp packages/core/package.json packages/core/package-lock.json .flatpak-core-install/
@@ -173,6 +186,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 486b03b09a709e5921a50e173243e59438055720
+        commit: 0452c57ae0feceb6a8353f5397ba227b81f65941
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
