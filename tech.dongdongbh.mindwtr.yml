@@ -106,6 +106,7 @@ modules:
       - |
           python3 - <<'PY'
           import json
+          import re
           from pathlib import Path
 
           lock_path = Path("apps/desktop/package-lock.json")
@@ -153,6 +154,18 @@ modules:
               print("Aligned package.json specs to package-lock:")
               for item in synced_specs:
                   print(f"  - {item}")
+
+          metainfo_path = Path("apps/desktop/src-tauri/linux/Mindwtr.metainfo.xml")
+          metainfo = metainfo_path.read_text()
+          metainfo, removed_prereleases = re.subn(
+              r'\n    <release version="[^"]*-(?:rc|beta|alpha|pre|preview)(?:[.-][^"]*)?".*?\n    </release>',
+              '',
+              metainfo,
+              flags=re.DOTALL,
+          )
+          if removed_prereleases:
+              metainfo_path.write_text(metainfo)
+              print(f"Removed {removed_prereleases} prerelease AppStream entries from the stable build")
           PY
       - mkdir -p .flatpak-core-install
       - cp packages/core/package.json packages/core/package-lock.json .flatpak-core-install/
