@@ -89,7 +89,6 @@ modules:
       append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
         - VITE_DONATION_PROMPT_ENABLED=true
-        - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
         - VITE_ANALYTICS_HEARTBEAT_URL=https://analytics.mindwtr.app/
         - CARGO_HOME=/run/build/mindwtr/cargo
         - CARGO_NET_OFFLINE=true
@@ -101,7 +100,8 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.5-rc.1
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.5-rc.2
+        - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
     build-commands:
       - |
           python3 - <<'PY'
@@ -210,6 +210,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 7b9a92c3b4afd68ea272f033d154c6bff57f56db
+        commit: 1cfd048171a43d1ae37ab51500537348efbb03fd
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
