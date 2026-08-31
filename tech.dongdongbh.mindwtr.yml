@@ -101,7 +101,8 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.1
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.5
+        - VITE_FEEDBACK_ENDPOINT_URL=https://feedback.mindwtr.app
     build-commands:
       - |
         python3 - <<'PY'
@@ -135,9 +136,33 @@ modules:
             for dependency_name, requested_spec in list(section.items()):
                 if not isinstance(requested_spec, str):
                     continue
-                if requested_spec.startswith(("file:", "workspace:", "git+", "github:", "http:", "https:", "link:", "npm:")):
-                    continue
                 locked = packages.get(f"node_modules/{dependency_name}")
+                if requested_spec.startswith("workspace:"):
+                    locked_resolved = locked.get("resolved") if isinstance(locked, dict) else None
+                    if (
+                        not isinstance(locked, dict)
+                        or locked.get("link") is not True
+                        or not isinstance(locked_resolved, str)
+                        or not locked_resolved
+                        or Path(locked_resolved).is_absolute()
+                    ):
+                        raise SystemExit(
+                            f"Expected a relative package-lock link for workspace dependency {dependency_name}"
+                        )
+                    checkout_root = Path.cwd().resolve()
+                    dependency_path = (package_path.parent / locked_resolved).resolve()
+                    if dependency_path != checkout_root and checkout_root not in dependency_path.parents:
+                        raise SystemExit(
+                            f"Workspace dependency {dependency_name} resolves outside the source checkout"
+                        )
+                    local_spec = f"file:{locked_resolved}"
+                    section[dependency_name] = local_spec
+                    synced_specs.append(
+                        f"{section_name}:{dependency_name}:{requested_spec}->{local_spec}"
+                    )
+                    continue
+                if requested_spec.startswith(("file:", "git+", "github:", "http:", "https:", "link:", "npm:")):
+                    continue
                 locked_version = locked.get("version") if isinstance(locked, dict) else None
                 if not isinstance(locked_version, str) or not locked_version:
                     continue
@@ -188,6 +213,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 3cccd51a58690269b39a017b02c398d9abf2d755
+        commit: 442f46602777a49301312a06bc19859708cac4cf
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
