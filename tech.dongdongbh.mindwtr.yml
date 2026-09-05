@@ -100,7 +100,7 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.7
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.2.8
         - VITE_DROPBOX_APP_KEY=7ob82zg0lx0arkp
         - VITE_FEEDBACK_ENDPOINT_URL=https://feedback.mindwtr.app
     build-commands:
@@ -211,6 +211,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 1c81907c5454c4b3da0b6ccac750739b104216ee
+        commit: 9f94211faecc2d1463403b7458069391f5c9d99c
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
