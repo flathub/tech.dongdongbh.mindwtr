@@ -1,11 +1,11 @@
 id: tech.dongdongbh.mindwtr
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node22
+  - org.freedesktop.Sdk.Extension.node26
   - org.freedesktop.Sdk.Extension.rust-stable
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm22
 command: mindwtr
 finish-args:
   - --share=ipc
@@ -86,16 +86,16 @@ modules:
   - name: mindwtr
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node22/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      append-path: /usr/lib/sdk/node26/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm22/bin
       env:
         - VITE_DONATION_PROMPT_ENABLED=true
         - VITE_ANALYTICS_HEARTBEAT_URL=https://analytics.mindwtr.app/
         - CARGO_HOME=/run/build/mindwtr/cargo
         - CARGO_NET_OFFLINE=true
-        - LIBCLANG_PATH=/usr/lib/sdk/llvm20/lib
+        - LIBCLANG_PATH=/usr/lib/sdk/llvm22/lib
         - XDG_CACHE_HOME=/run/build/mindwtr/flatpak-node/cache
         - npm_config_cache=/run/build/mindwtr/flatpak-node/npm-cache
-        - npm_config_nodedir=/usr/lib/sdk/node22
+        - npm_config_nodedir=/usr/lib/sdk/node26
         - npm_config_offline=true
         - npm_config_audit=false
         - npm_config_fund=false
