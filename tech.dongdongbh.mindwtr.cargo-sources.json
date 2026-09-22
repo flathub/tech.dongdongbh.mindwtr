@@ -2121,6 +2121,32 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/fontconfig-parser/fontconfig-parser-0.5.8.crate",
+        "sha256": "bbc773e24e02d4ddd8395fd30dc147524273a83e54e0f312d986ea30de5f5646",
+        "dest": "cargo/vendor/fontconfig-parser-0.5.8"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"bbc773e24e02d4ddd8395fd30dc147524273a83e54e0f312d986ea30de5f5646\", \"files\": {}}",
+        "dest": "cargo/vendor/fontconfig-parser-0.5.8",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/fontdb/fontdb-0.24.0.crate",
+        "sha256": "2660c5e9157bf76d2db1294e4a9feba604ef610819a3b591088d0d8392a3290f",
+        "dest": "cargo/vendor/fontdb-0.24.0"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"2660c5e9157bf76d2db1294e4a9feba604ef610819a3b591088d0d8392a3290f\", \"files\": {}}",
+        "dest": "cargo/vendor/fontdb-0.24.0",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
         "url": "https://static.crates.io/crates/foreign-types/foreign-types-0.3.2.crate",
         "sha256": "f6f339eb8adc052cd2ca78910fda869aefa38d22d5cb648e6485e4d3fc06f3b1",
         "dest": "cargo/vendor/foreign-types-0.3.2"
@@ -3910,6 +3936,19 @@
         "type": "inline",
         "contents": "{\"package\": \"f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273\", \"files\": {}}",
         "dest": "cargo/vendor/memchr-2.7.6",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/memmap2/memmap2-0.9.11.crate",
+        "sha256": "d1219ed1b7f229ee7104d281dd01d6802fe28bb6e95d292942c4daacdeb798c0",
+        "dest": "cargo/vendor/memmap2-0.9.11"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"d1219ed1b7f229ee7104d281dd01d6802fe28bb6e95d292942c4daacdeb798c0\", \"files\": {}}",
+        "dest": "cargo/vendor/memmap2-0.9.11",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -5943,6 +5982,19 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/roxmltree/roxmltree-0.20.0.crate",
+        "sha256": "6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97",
+        "dest": "cargo/vendor/roxmltree-0.20.0"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97\", \"files\": {}}",
+        "dest": "cargo/vendor/roxmltree-0.20.0",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
         "url": "https://static.crates.io/crates/rusqlite/rusqlite-0.31.0.crate",
         "sha256": "b838eba278d213a8beaf485bd313fd580ca4505a00d5871caeb1457c55322cae",
         "dest": "cargo/vendor/rusqlite-0.31.0"
@@ -6653,6 +6705,19 @@
         "type": "inline",
         "contents": "{\"package\": \"7a2ae44ef20feb57a68b23d846850f861394c2e02dc425a50098ae8c90267589\", \"files\": {}}",
         "dest": "cargo/vendor/slab-0.4.11",
+        "dest-filename": ".cargo-checksum.json"
+    },
+    {
+        "type": "archive",
+        "archive-type": "tar-gzip",
+        "url": "https://static.crates.io/crates/slotmap/slotmap-1.1.1.crate",
+        "sha256": "bdd58c3c93c3d278ca835519292445cb4b0d4dc59ccfdf7ceadaab3f8aeb4038",
+        "dest": "cargo/vendor/slotmap-1.1.1"
+    },
+    {
+        "type": "inline",
+        "contents": "{\"package\": \"bdd58c3c93c3d278ca835519292445cb4b0d4dc59ccfdf7ceadaab3f8aeb4038\", \"files\": {}}",
+        "dest": "cargo/vendor/slotmap-1.1.1",
         "dest-filename": ".cargo-checksum.json"
     },
     {
