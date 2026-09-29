@@ -212,5 +212,8 @@ modules:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
         commit: 3bfdc276b39afb49b1314a2281e7b6647943db08
+      # Mindwtr #1314: ask the Secret portal once per launch (upstream c5dc4dc57).
+      - type: patch
+        path: patches/mindwtr-1314-secret-portal-once.patch
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
