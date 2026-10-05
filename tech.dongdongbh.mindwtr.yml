@@ -101,7 +101,7 @@ modules:
         - npm_config_audit=false
         - npm_config_fund=false
         - npm_config_update_notifier=false
-        - VITE_ANALYTICS_RELEASE_VERSION=v1.3.3
+        - VITE_ANALYTICS_RELEASE_VERSION=v1.3.4
         - VITE_FEEDBACK_ENDPOINT_URL=https://feedback.mindwtr.app
     build-commands:
       - |
@@ -201,9 +201,24 @@ modules:
       - cd apps/desktop && npm exec vite build
       - mkdir -p .cargo
       - cp cargo/config .cargo/config.toml
+      # BEGIN MINDWTR MCP BUILD
+      - ln -sfn ../../../apps/desktop/node_modules/react packages/core/node_modules/react
+      - mkdir -p .flatpak-mcp-install
+      - cp apps/mcp-server/package.json apps/mcp-server/package-lock.json .flatpak-mcp-install/
+      - npm ci --prefix=.flatpak-mcp-install --offline --omit=optional --ignore-scripts --legacy-peer-deps --workspaces=false
+      - mkdir -p apps/mcp-server/node_modules
+      - cp -a .flatpak-mcp-install/node_modules/. apps/mcp-server/node_modules/
+      - mkdir -p apps/mcp-server/node_modules/@mindwtr
+      - ln -sfn ../../../../packages/core apps/mcp-server/node_modules/@mindwtr/core
+      - chmod +x .flatpak-bun/bun
+      - ./.flatpak-bun/bun scripts/build-mcp-sidecar.mjs
+      # END MINDWTR MCP BUILD
       - cargo --offline build --manifest-path apps/desktop/src-tauri/Cargo.toml --bins
         --features tauri/custom-protocol --release
       - install -Dm755 apps/desktop/src-tauri/target/release/mindwtr /app/bin/mindwtr
+      # BEGIN MINDWTR MCP INSTALL
+      - install -Dm755 apps/desktop/src-tauri/binaries/mindwtr-mcp-$(rustc -vV | sed -n "s/^host: //p") /app/bin/mindwtr-mcp
+      # END MINDWTR MCP INSTALL
       - install -Dm644 apps/desktop/src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/tech.dongdongbh.mindwtr.png
       - install -Dm644 apps/desktop/src-tauri/icons/128x128@2x.png /app/share/icons/hicolor/256x256/apps/tech.dongdongbh.mindwtr.png
       - install -Dm644 apps/desktop/src-tauri/linux/tech.dongdongbh.mindwtr.desktop
@@ -211,11 +226,23 @@ modules:
       - install -Dm644 apps/desktop/src-tauri/linux/Mindwtr.metainfo.xml /app/share/metainfo/tech.dongdongbh.mindwtr.metainfo.xml
       - install -Dm644 LICENSE /app/share/licenses/tech.dongdongbh.mindwtr/LICENSE
     sources:
+      # BEGIN MINDWTR MCP BUN SOURCES
+      - type: archive
+        url: https://github.com/oven-sh/bun/releases/download/bun-v1.3.5/bun-linux-x64-baseline.zip
+        sha256: 6bddacd6a65855698b9816f2d74871eda4dd0b7fa921140c6445248f94a742fd
+        dest: .flatpak-bun
+        strip-components: 1
+        only-arches: [x86_64]
+      - type: archive
+        url: https://github.com/oven-sh/bun/releases/download/bun-v1.3.5/bun-linux-aarch64.zip
+        sha256: ed01000f85bd97785228ad2845dc92a1860b8054856826d7317690ac8f8ee74b
+        dest: .flatpak-bun
+        strip-components: 1
+        only-arches: [aarch64]
+      # END MINDWTR MCP BUN SOURCES
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
-        commit: 3bfdc276b39afb49b1314a2281e7b6647943db08
+        commit: f5f29da1f938482647406412db7d0f038a9c596d
       # Mindwtr #1314: ask the Secret portal once per launch (upstream c5dc4dc57).
-      - type: patch
-        path: patches/mindwtr-1314-secret-portal-once.patch
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
