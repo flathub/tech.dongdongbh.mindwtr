@@ -202,6 +202,7 @@ modules:
       - mkdir -p .cargo
       - cp cargo/config .cargo/config.toml
       # BEGIN MINDWTR MCP BUILD
+      - ln -sfn ../../../apps/desktop/node_modules/react packages/core/node_modules/react
       - mkdir -p .flatpak-mcp-install
       - cp apps/mcp-server/package.json apps/mcp-server/package-lock.json .flatpak-mcp-install/
       - npm ci --prefix=.flatpak-mcp-install --offline --omit=optional --ignore-scripts --legacy-peer-deps --workspaces=false
