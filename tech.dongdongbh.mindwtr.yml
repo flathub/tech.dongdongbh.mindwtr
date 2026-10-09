@@ -73,8 +73,8 @@ modules:
       - -DWITH_PHONENUMBER=OFF
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.0.tar.xz
-        sha256: 78be88e9a511f5afe7ff2e363eade84b622dd0282647fc576edb2d4ff2962cba
+        url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.1.tar.xz
+        sha256: b75c823445d7d30bca797eee929809e8d389abbb8d471f68ae2af60972779f26
         x-checker-data:
           type: gnome
           name: evolution-data-server
@@ -205,7 +205,8 @@ modules:
       - ln -sfn ../../../apps/desktop/node_modules/react packages/core/node_modules/react
       - mkdir -p .flatpak-mcp-install
       - cp apps/mcp-server/package.json apps/mcp-server/package-lock.json .flatpak-mcp-install/
-      - npm ci --prefix=.flatpak-mcp-install --offline --omit=optional --ignore-scripts --legacy-peer-deps --workspaces=false
+      - npm ci --prefix=.flatpak-mcp-install --offline --omit=optional --ignore-scripts
+        --legacy-peer-deps --workspaces=false
       - mkdir -p apps/mcp-server/node_modules
       - cp -a .flatpak-mcp-install/node_modules/. apps/mcp-server/node_modules/
       - mkdir -p apps/mcp-server/node_modules/@mindwtr
@@ -217,7 +218,8 @@ modules:
         --features tauri/custom-protocol --release
       - install -Dm755 apps/desktop/src-tauri/target/release/mindwtr /app/bin/mindwtr
       # BEGIN MINDWTR MCP INSTALL
-      - install -Dm755 apps/desktop/src-tauri/binaries/mindwtr-mcp-$(rustc -vV | sed -n "s/^host: //p") /app/bin/mindwtr-mcp
+      - install -Dm755 apps/desktop/src-tauri/binaries/mindwtr-mcp-$(rustc -vV | sed -n "s/^host: //p")
+          /app/bin/mindwtr-mcp
       # END MINDWTR MCP INSTALL
       - install -Dm644 apps/desktop/src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/tech.dongdongbh.mindwtr.png
       - install -Dm644 apps/desktop/src-tauri/icons/128x128@2x.png /app/share/icons/hicolor/256x256/apps/tech.dongdongbh.mindwtr.png
