@@ -37,12 +37,13 @@ modules:
       - -DLIBICAL_CXX_BINDINGS=false
     sources:
       - type: archive
-        url: https://github.com/libical/libical/releases/download/v4.0.6/libical-4.0.6.tar.gz
-        sha256: 2e3729cb69c282d3bb17a8d2b198af6e4bc7502fd3621c9adf573921fe9dceb0
+        url: https://github.com/libical/libical/releases/download/v4.0.7/libical-4.0.7.tar.gz
+        sha256: 47c05bc96e41416578cf1803bb2ba3f8d292cb17d5ac2fca539dee922bae8a94
         x-checker-data:
           type: anitya
           project-id: 1637
-          url-template: https://github.com/libical/libical/releases/download/v$version/libical-$version.tar.gz
+          url-template: 
+            https://github.com/libical/libical/releases/download/v$version/libical-$version.tar.gz
 
   - name: evolution-data-server
     cleanup:
@@ -73,7 +74,8 @@ modules:
       - -DWITH_PHONENUMBER=OFF
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.1.tar.xz
+        url: 
+          https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.1.tar.xz
         sha256: b75c823445d7d30bca797eee929809e8d389abbb8d471f68ae2af60972779f26
         x-checker-data:
           type: gnome
