@@ -8,6 +8,7 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm22
 command: mindwtr
 finish-args:
+  - --env=FONTCONFIG_FILE=/app/etc/mindwtr/fonts.conf
   - --share=ipc
   - --socket=fallback-x11
   - --socket=wayland
@@ -209,11 +210,14 @@ modules:
       - install -Dm644 apps/desktop/src-tauri/linux/tech.dongdongbh.mindwtr.desktop
         /app/share/applications/tech.dongdongbh.mindwtr.desktop
       - install -Dm644 apps/desktop/src-tauri/linux/Mindwtr.metainfo.xml /app/share/metainfo/tech.dongdongbh.mindwtr.metainfo.xml
+      - install -Dm644 mindwtr-fonts.conf /app/etc/mindwtr/fonts.conf
       - install -Dm644 LICENSE /app/share/licenses/tech.dongdongbh.mindwtr/LICENSE
     sources:
       - type: git
         url: https://github.com/dongdongbh/Mindwtr.git
         commit: 24d99724c599ef05d09f0140f59b5ecf65235b86
       # Mindwtr #1314: ask the Secret portal once per launch (upstream c5dc4dc57).
+      - type: file
+        path: mindwtr-fonts.conf
       - tech.dongdongbh.mindwtr.node-sources.json
       - tech.dongdongbh.mindwtr.cargo-sources.json
