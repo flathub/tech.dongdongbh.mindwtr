@@ -23,8 +23,6 @@ finish-args:
 
 modules:
   - name: libical
-    cleanup:
-      - /lib/cmake
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -36,6 +34,8 @@ modules:
       - -DLIBICAL_GOBJECT_INTROSPECTION=false
       - -DLIBICAL_BUILD_TESTING=false
       - -DLIBICAL_CXX_BINDINGS=false
+    cleanup:
+      - /lib/cmake
     sources:
       - type: archive
         url: https://github.com/libical/libical/releases/download/v4.0.8/libical-4.0.8.tar.gz
@@ -46,11 +46,6 @@ modules:
           url-template: https://github.com/libical/libical/releases/download/v$version/libical-$version.tar.gz
 
   - name: evolution-data-server
-    cleanup:
-      - /lib/cmake
-      - /lib/evolution-data-server/*-backends
-      - /libexec
-      - /share/dbus-1/services
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
@@ -72,6 +67,11 @@ modules:
       - -DWITH_LIBDB=OFF
       - -DWITH_OPENLDAP=OFF
       - -DWITH_PHONENUMBER=OFF
+    cleanup:
+      - /lib/cmake
+      - /lib/evolution-data-server/*-backends
+      - /libexec
+      - /share/dbus-1/services
     sources:
       - type: archive
         url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.1.tar.xz
