@@ -74,8 +74,8 @@ modules:
       - -DWITH_PHONENUMBER=OFF
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.1.tar.xz
-        sha256: b75c823445d7d30bca797eee929809e8d389abbb8d471f68ae2af60972779f26
+        url: https://download.gnome.org/sources/evolution-data-server/3.62/evolution-data-server-3.62.2.tar.xz
+        sha256: 7872fc206b682e8fd8899bb251ad8790704f7b84f3bade48700051333573253d
         x-checker-data:
           type: gnome
           name: evolution-data-server
